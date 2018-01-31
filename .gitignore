@@ -1,0 +1,6 @@
+target/
+*.config
+test-config.sbt
+test
+base-directory
+project/TestPlugin.scala

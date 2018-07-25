@@ -3,7 +3,7 @@
 #  Versions
 
 ```scala
-libraryDependencies += "ch.epfl.scala" %% "versions" % "0.2.0"
+libraryDependencies += "ch.epfl.scala" %% "versions" % "0.2.1"
 ```
 
 ```scala

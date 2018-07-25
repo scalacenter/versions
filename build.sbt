@@ -2,18 +2,25 @@ organization := "ch.epfl.scala"
 
 name := "versions"
 
-version := "0.2.0"
+version := "0.2.1"
 
-scalaVersion := "2.12.4"
+scalaVersion       := "2.12.6"
+crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.6")
 
 libraryDependencies ++= Seq(
   "com.lihaoyi" %% "fastparse" % "1.0.0",
   "org.scalatest" %% "scalatest" % "3.0.4" % Test
 )
 
+libraryDependencies ++= {
+  if (scalaBinaryVersion.value == "2.10") {
+    Seq(compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full))
+  } else Seq()
+}
+
 description := "Library to parse and order versions"
 
-// publishing: 
+// publishing:
 commands += Command.command("ci-release") { s =>
   "clean" ::
     "versions/publishSigned" ::

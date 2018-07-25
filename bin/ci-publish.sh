@@ -7,7 +7,7 @@ if [[ "$TRAVIS_SECURE_ENV_VARS" == true ]]; then
   if [ -n "$TRAVIS_TAG" ]; then
     echo "$PGP_SECRET" | base64 --decode | gpg --import
     echo "Tag push, publishing release to Sonatype."
-    sbt ci-release sonatypeReleaseAll
+    sbt ";++$TRAVIS_SCALA_VERSION ;ci-release ;sonatypeReleaseAll"
   fi
 else
   echo "Skipping publish, branch=$TRAVIS_BRANCH"
